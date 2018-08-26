@@ -8,7 +8,9 @@
 </template>
 
 <script>
-let path = '';
+let config = {
+  path: '',
+};
 export default {
   props: {
     color: {
@@ -68,12 +70,12 @@ export default {
         .toLowerCase()
         .replace(/ /g, '_')
         .split(/\./);
-      return `${path}/icons/${sprite}-sprite/svg/symbols.svg#${icon}`;
+      return `${config.path}/icons/${sprite}-sprite/svg/symbols.svg#${icon}`;
     },
   },
 
   basePath(newPath) {
-    path = newPath;
+    config.path = newPath;
   },
 };
 </script>
