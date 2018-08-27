@@ -1,11 +1,11 @@
 <template>
   <div class="slds-checkbox_button-group">
-    <span v-for="(value, index) in values" :key="index" class="slds-button slds-checkbox_button">
-      <input :id="checkboxId(index)" value="true" :checked="value.value"
-        @input="toggle($event, index, value)"
+    <span v-for="(entry, index) in group" :key="index" class="slds-button slds-checkbox_button">
+      <input :id="checkboxId(index)" value="true" :checked="entry.value"
+        @input="toggle($event, index, entry)"
         name="checkbox" type="checkbox" />
       <label class="slds-checkbox_button__label" :for="checkboxId(index)">
-        <span class="slds-checkbox_faux">{{value.label}}</span>
+        <span class="slds-checkbox_faux">{{entry.label}}</span>
       </label>
     </span>
   </div>
@@ -20,7 +20,12 @@ export default {
     };
   },
   props: {
-    values: Array,
+    value: Array,
+  },
+  data() {
+    return {
+      group: this.value,
+    };
   },
 
   mounted() {
@@ -34,10 +39,8 @@ export default {
     },
 
     toggle: function($event, index, value) {
-      this.$emit('input', {
-        value: $event.target.checked,
-        label: value,
-      });
+      this.group[index].value = $event.target.checked;
+      this.$emit('input', this.group);
     },
   },
 };

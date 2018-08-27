@@ -8301,7 +8301,7 @@ a.slds-button--inverse:focus {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url("/assets/images/themes/oneSalesforce/banner-brand-default.png"), linear-gradient(to top, rgba(221, 219, 218, 0) 0, #e8e8e8);
+  background-image: url("assets/images/themes/oneSalesforce/banner-brand-default.png"), linear-gradient(to top, rgba(221, 219, 218, 0) 0, #e8e8e8);
   background-repeat: repeat-x;
   background-position: top left; }
 
@@ -9314,7 +9314,7 @@ a.slds-button--inverse:focus {
 .slds-popover_walkthrough .slds-popover__header,
 .slds-popover--walkthrough .slds-popover__header {
   background-color: #164a85;
-  background-image: url("/assets/images/popovers/popover-header.png");
+  background-image: url("assets/images/popovers/popover-header.png");
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: contain;
@@ -9360,7 +9360,7 @@ a.slds-button--inverse:focus {
 .slds-popover_feature {
   border-color: #164a85;
   background-color: #164a85;
-  background-image: url("/assets/images/popovers/popover-action.png");
+  background-image: url("assets/images/popovers/popover-action.png");
   background-repeat: no-repeat;
   background-size: 100% 2.25rem;
   background-position: bottom;
@@ -11880,7 +11880,7 @@ a.slds-button--inverse:focus {
 .slds-global-header__logo {
   width: 12.5rem;
   height: 2.5rem;
-  background-image: url("/assets/images/logo.svg");
+  background-image: url("assets/images/logo.svg");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left center; }
@@ -20203,7 +20203,7 @@ a.slds-button--inverse:focus {
 .slds-einstein-header {
   position: relative;
   background-color: #95cbfc;
-  background-image: url("/assets/images/einstein-headers/einstein-header-background.svg");
+  background-image: url("assets/images/einstein-headers/einstein-header-background.svg");
   background-repeat: no-repeat;
   background-position: left top;
   background-size: cover;
@@ -20219,7 +20219,7 @@ a.slds-button--inverse:focus {
 .slds-einstein-header__figure, .slds-einstein-header__figure:last-child {
   margin-bottom: calc((0.75rem + 5px) * -1);
   height: 4.75rem;
-  background-image: url("/assets/images/einstein-headers/einstein-figure.svg");
+  background-image: url("assets/images/einstein-headers/einstein-figure.svg");
   background-position: right bottom;
   background-repeat: no-repeat; }
 
@@ -20604,7 +20604,7 @@ a.slds-button--inverse:focus {
   overflow: auto;
   padding: 1rem 3rem 7.75rem;
   color: #00396b;
-  background-image: url("/assets/images/welcome-mat/bg-info@2x.png");
+  background-image: url("assets/images/welcome-mat/bg-info@2x.png");
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: contain;

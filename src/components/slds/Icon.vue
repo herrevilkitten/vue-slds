@@ -10,6 +10,13 @@
 <script>
 let config = {
   path: '',
+  iconPath(name) {
+    const [sprite, icon] = (name || '.')
+      .toLowerCase()
+      .replace(/ /g, '_')
+      .split(/\./);
+    return `${config.path}/icons/${sprite}-sprite/svg/symbols.svg#${icon}`;
+  },
 };
 export default {
   props: {
@@ -65,17 +72,17 @@ export default {
 
       return className;
     },
-    iconPath: function() {
-      const [sprite, icon] = (this.name || '.')
-        .toLowerCase()
-        .replace(/ /g, '_')
-        .split(/\./);
-      return `${config.path}/icons/${sprite}-sprite/svg/symbols.svg#${icon}`;
+    iconPath: function(name) {
+      return config.iconPath(this.name);
     },
   },
 
   basePath(newPath) {
     config.path = newPath;
+  },
+
+  iconPath(name) {
+    return config.iconPath(name);
   },
 };
 </script>

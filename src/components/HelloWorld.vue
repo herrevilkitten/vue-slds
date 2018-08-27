@@ -1,5 +1,12 @@
 <template>
   <div class="hello">
+    <global-navigation name="Vue SLDS">
+      <ContextBarMenuItem title="Home" :active="checkboxValue"></ContextBarMenuItem>
+      <context-bar-menu-dropdown title="Components">
+        <dropdown-item title="Alert" @click="changeComponent($event)"></dropdown-item>
+        <dropdown-item title="Badge" @click="changeComponent($event)"></dropdown-item>
+      </context-bar-menu-dropdown>
+    </global-navigation>
     <BrandBand size="large"></BrandBand>
 
     <Icon name="utility.announcement" description="blahblah"></Icon>
@@ -21,9 +28,14 @@
     </MediaObject>
     </Grid>
 
+    <div>
       <Checkbox v-model="checkboxValue">This is a checkbox: {{checkboxValue}}</Checkbox>
+    </div>
       
-    <CheckboxGroup :values="group"></CheckboxGroup>
+    <div>
+    <CheckboxGroup v-model="group"></CheckboxGroup>
+    <div>{{group}}</div>
+    </div>
 
     <Icon name="action.description"></Icon>
 
@@ -45,8 +57,14 @@ import BrandBand from './slds/BrandBand.vue';
 import Button from './slds/Button.vue';
 import Checkbox from './slds/Checkbox.vue';
 import CheckboxGroup from './slds/CheckboxGroup.vue';
+import ContextBarMenuDropdown from './slds/ContextBarMenuDropdown.vue';
+import ContextBarMenuItem from './slds/ContextBarMenuItem.vue';
 import Control from './slds/Control.vue';
+import DropdownDivider from './slds/DropdownDivider.vue';
+import DropdownItem from './slds/DropdownItem.vue';
+import DropdownList from './slds/DropdownList.vue';
 import Form from './slds/Form.vue';
+import GlobalNavigation from './slds/GlobalNavigation';
 import Grid from './slds/Grid.vue';
 import Icon from './slds/Icon.vue';
 import MediaObject from './slds/MediaObject.vue';
@@ -55,7 +73,7 @@ import PageHeader from './slds/PageHeader.vue';
 
 import directives from './slds/Directives';
 
-Icon.basePath('/assets');
+Icon.basePath('./assets');
 
 export default {
   components: {
@@ -65,8 +83,14 @@ export default {
     Button,
     Checkbox,
     CheckboxGroup,
+    ContextBarMenuDropdown,
+    ContextBarMenuItem,
     Control,
+    DropdownDivider,
+    DropdownItem,
+    DropdownList,
     Form,
+    GlobalNavigation,
     Grid,
     Icon,
     MediaObject,
@@ -77,51 +101,27 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String,
-    checkboxValue: Boolean,
-    group: Array,
   },
-  mounted() {
-    this.group = [
+  data() {
+    return {
+      checkboxValue: false,
+      group: [
         { label: 'Mon', value: false },
         { label: 'Tue', value: false },
         { label: 'Wed', value: false },
         { label: 'Thur', value: false },
         { label: 'Fri', value: false },
-      ];
-  },/*
-  computed: {
-    group: function() {
-      return [
-        { label: 'Mon', value: false },
-        { label: 'Tue', value: false },
-        { label: 'Wed', value: false },
-        { label: 'Thur', value: false },
-        { label: 'Fri', value: false },
-      ];
-    },
-  },*/
+      ],
+    };
+  },
   methods: {
     logEvent(event) {
       console.log(event);
     },
+
+    changeComponent(event) {
+      console.log('Changing component:', event);
+    }
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>

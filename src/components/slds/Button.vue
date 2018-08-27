@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import SldsIcon from './Icon.vue';
+import Icon from './Icon.vue';
 
 export default {
   props: {
@@ -34,8 +34,8 @@ export default {
     },
 
     disabled: {
-      type: String,
-      default: '',
+      type: Boolean,
+      default: false,
     },
   },
 
@@ -61,11 +61,7 @@ export default {
     },
 
     iconPath() {
-      const [sprite, icon] = (this.icon || '.')
-        .toLowerCase()
-        .replace(/ /g, '_')
-        .split(/\./);
-      return `${SldsIcon.path}/icons/${sprite}-sprite/svg/symbols.svg#${icon}`;
+      return Icon.iconPath(this.icon);
     },
   },
 
