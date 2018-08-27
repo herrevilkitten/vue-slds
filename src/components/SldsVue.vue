@@ -3,17 +3,29 @@
     <global-navigation name="Vue SLDS">
       <ContextBarMenuItem title="Home" :active="checkboxValue"></ContextBarMenuItem>
       <context-bar-menu-dropdown title="Components">
-        <dropdown-item title="Alert" @click="changeComponent($event)"></dropdown-item>
-        <dropdown-item title="Badge" @click="changeComponent($event)"></dropdown-item>
+        <dropdown-item v-for="entry in menu" :key="entry" :title="entry" @click="changeComponent($event, entry)"></dropdown-item>
       </context-bar-menu-dropdown>
     </global-navigation>
+
+<alert-doc></alert-doc>
+
+<component-documentation title="Badge">
+    <Badge type="dark">I am a badge</Badge>
+</component-documentation>
+
+<component-documentation title="Checkbox">
+      <Checkbox v-model="checkboxValue">This is a checkbox</Checkbox>
+</component-documentation>
+
+<component-documentation title="Checkbox Group">
+    <CheckboxGroup v-model="group"></CheckboxGroup>
+</component-documentation>
+
+
     <BrandBand size="large"></BrandBand>
 
     <Icon name="utility.announcement" description="blahblah"></Icon>
 
-    <Alert>
-      Welcome to SLDS
-    </Alert>
 
     <Grid v-size="'1/2'">
     <MediaObject :center="true">
@@ -28,19 +40,10 @@
     </MediaObject>
     </Grid>
 
-    <div>
-      <Checkbox v-model="checkboxValue">This is a checkbox: {{checkboxValue}}</Checkbox>
-    </div>
-      
-    <div>
-    <CheckboxGroup v-model="group"></CheckboxGroup>
-    <div>{{group}}</div>
-    </div>
 
     <Icon name="action.description"></Icon>
 
     <Grid>
-    <Badge type="dark">I am a badge</Badge>
     
     </Grid>
 
@@ -51,7 +54,6 @@
 </template>
 
 <script>
-import Alert from './slds/Alert.vue';
 import Badge from './slds/Badge.vue';
 import BrandBand from './slds/BrandBand.vue';
 import Button from './slds/Button.vue';
@@ -73,11 +75,17 @@ import PageHeader from './slds/PageHeader.vue';
 
 import directives from './slds/Directives';
 
+import ComponentDocumentation from './documentation/ComponentDocumentation.vue';
+import ComponentHeader from './documentation/ComponentHeader.vue';
+
+import AlertDoc from './documentation/Alert.vue';
+
 Icon.basePath('./assets');
 
 export default {
   components: {
-    Alert,
+    AlertDoc,
+
     Badge,
     BrandBand,
     Button,
@@ -96,9 +104,12 @@ export default {
     MediaObject,
     Notification,
     PageHeader,
+
+    ComponentDocumentation,
+    ComponentHeader,
   },
   directives: directives,
-  name: 'HelloWorld',
+  name: 'SldsVue',
   props: {
     msg: String,
   },
@@ -112,6 +123,7 @@ export default {
         { label: 'Thur', value: false },
         { label: 'Fri', value: false },
       ],
+      menu: ['Alert', 'Badge'],
     };
   },
   methods: {
@@ -119,9 +131,10 @@ export default {
       console.log(event);
     },
 
-    changeComponent(event) {
+    changeComponent(event, entry) {
       console.log('Changing component:', event);
-    }
+      console.log('Scroll to', entry);
+    },
   },
 };
 </script>

@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <slds-vue></slds-vue>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SldsVue from './components/SldsVue.vue';
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
-}
+    SldsVue,
+  },
+};
 </script>
 
 <style>

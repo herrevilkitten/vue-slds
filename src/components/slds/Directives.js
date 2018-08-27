@@ -51,7 +51,8 @@ const TextColor = {
 
 const TextSize = {
   inserted: (el, binding) => {
-    el.className = el.className + ` slds-text_${binding.value}`;
+    console.log(el, binding);
+    el.className = el.className + ` slds-text-${binding.value}`;
   },
 };
 
