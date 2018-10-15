@@ -1,12 +1,23 @@
 <template>
-  <div class="hello">
+  <div>
     <global-navigation name="Vue SLDS">
-      <ContextBarMenuItem title="Home" :active="checkboxValue"></ContextBarMenuItem>
-      <context-bar-menu-dropdown title="Components">
-        <dropdown-item v-for="entry in menu" :key="entry" :title="entry" @click="changeComponent($event, entry)"></dropdown-item>
+      <context-bar-menu-dropdown title="Components" :active="activeMenu == 'component'">
+        <dropdown-item title="Overview" @click="changeSection($event, 'Overview')"></dropdown-item>
+        <dropdown-divider></dropdown-divider>
+        <dropdown-item v-for="entry in componentMenu" :key="entry" :title="entry" @click="changeSection($event, 'component', entry)"></dropdown-item>
+      </context-bar-menu-dropdown>
+      <context-bar-menu-dropdown title="Layout" :active="activeMenu == 'layout'">
+        <dropdown-item title="Overview" @click="changeSection($event, 'layout', 'Overview')"></dropdown-item>
+        <dropdown-divider></dropdown-divider>
+        <dropdown-item v-for="entry in layoutMenu" :key="entry" :title="entry" @click="changeSection($event, 'layout', entry)"></dropdown-item>
+      </context-bar-menu-dropdown>
+      <context-bar-menu-dropdown title="Directives" :active="activeMenu == 'directive'">
+        <dropdown-item title="Overview" @click="changeSection($event, 'directive', 'Overview')"></dropdown-item>
+        <dropdown-divider></dropdown-divider>
+        <dropdown-item v-for="entry in directiveMenu" :key="entry" :title="entry" @click="changeSection($event, 'directive', entry)"></dropdown-item>
       </context-bar-menu-dropdown>
     </global-navigation>
-
+    <div class="body">
 <alert-doc></alert-doc>
 
 <component-documentation title="Badge">
@@ -15,17 +26,17 @@
 
 <component-documentation title="Checkbox">
       <Checkbox v-model="checkboxValue">This is a checkbox</Checkbox>
+      <h2>v-model</h2>
+      This component supports v-model.
 </component-documentation>
 
 <component-documentation title="Checkbox Group">
     <CheckboxGroup v-model="group"></CheckboxGroup>
 </component-documentation>
 
-
     <BrandBand size="large"></BrandBand>
 
     <Icon name="utility.announcement" description="blahblah"></Icon>
-
 
     <Grid v-size="'1/2'">
     <MediaObject :center="true">
@@ -40,7 +51,6 @@
     </MediaObject>
     </Grid>
 
-
     <Icon name="action.description"></Icon>
 
     <Grid>
@@ -50,6 +60,7 @@
     <Notification subject="test" @close="logEvent">A Notification <Icon name="utility.announcement" slot="icon"></Icon></Notification>
     
     <Button icon="utility.close" :border="true" type="filled" @click="logEvent"></Button>
+    </div>
   </div>
 </template>
 
@@ -123,7 +134,17 @@ export default {
         { label: 'Thur', value: false },
         { label: 'Fri', value: false },
       ],
-      menu: ['Alert', 'Badge'],
+      componentMenu: [
+        'Alert',
+        'Badge',
+        'Button',
+        'Checkbox',
+        'Checkbox Group',
+        'Icon',
+      ],
+      layoutMenu: ['Grid'],
+      directiveMenu: ['Text Align', 'Text Color', 'Text Size'],
+      activeMenu: 'component',
     };
   },
   methods: {
@@ -131,9 +152,9 @@ export default {
       console.log(event);
     },
 
-    changeComponent(event, entry) {
-      console.log('Changing component:', event);
-      console.log('Scroll to', entry);
+    changeSection(event, category, entry) {
+      console.log('Route to', category, entry);
+      this.activeMenu = category;
     },
   },
 };

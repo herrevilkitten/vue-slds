@@ -1,7 +1,8 @@
 <template>
-<div class="component-documentation">
+<div class="component-documentation" v-padding="'horizontal medium'">
   <component-header :title="title"></component-header>
   <slot></slot>
+  <hr />
 </div>
 </template>
 
@@ -15,10 +16,13 @@
 <script>
 import ComponentHeader from './ComponentHeader.vue';
 
+import Directives from '../slds/Directives';
+
 export default {
   components: {
     ComponentHeader,
   },
+  directives: Directives,
   props: {
     title: String,
   },

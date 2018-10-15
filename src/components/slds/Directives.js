@@ -1,3 +1,20 @@
+const DescriptionList = {
+  inserted: (el, binding) => {
+    const value = binding.value || 'default';
+    el.className = el.className + ` slds-dl_${value} `;
+    
+    const dt = el.querySelectorAll('dt');
+    for (let i = 0; i < dt.length; ++i) {
+      dt[i].className = dt[i].className + ` slds-dl_${value}__label`;
+    }
+
+    const dl = el.querySelectorAll('dl');
+    for (let i = 0; i < dl.length; ++i) {
+      dl[i].className = dl[i].className + ` slds-dl_${value}__detail`;
+    }
+  }
+};
+
 const Margin = {
   inserted: (el, binding) => {
     const value = binding.value || 'around medium';
@@ -51,7 +68,6 @@ const TextColor = {
 
 const TextSize = {
   inserted: (el, binding) => {
-    console.log(el, binding);
     el.className = el.className + ` slds-text-${binding.value}`;
   },
 };
@@ -92,6 +108,7 @@ const TextMonospace = {
 
 
 export default {
+  DescriptionList,
   Margin,
   Padding,
   Position,
